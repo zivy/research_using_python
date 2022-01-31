@@ -1,0 +1,6 @@
+name: my_project
+
+channels:
+  - simpleitk
+dependencies:
+  - SimpleITK>=2.1.0

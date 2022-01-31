@@ -1,0 +1,15 @@
+name: my_project_dev
+
+channels:
+  - defaults
+  - simpleitk
+  - conda-forge
+dependencies:
+  - SimpleITK>=2.0.0
+  - spyder     #only for development
+  - pytest     #only for development
+  - flake8     #only for development
+  - pre-commit #only for development
+  - pip
+  - pip:
+     - black   #only for development 
