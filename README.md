@@ -16,13 +16,13 @@
 ### Once per repository setup
 0. [Create empty repository on GitHub](https://docs.github.com/en/get-started/quickstart/create-a-repo), lets call it my_project.
 1. Initial commit into local repository and push to remote:
-  0. Create local repository (also creates new directory) `git init my_project`
-  1. Create a [markdown](https://en.wikipedia.org/wiki/Markdown) file, README.md describing the project.
-  2. Create an `environment_dev.yml` file based on [this example](environment_dev.yml). Change the environment name to an appropriate one and add relevant packages.
-  3. Copy this [pre-commit configuration file](.pre-commit-config.yaml).
-  4. Copy this [.gitignore file](.gitignore) and add file types you want git to ignore.
-  5. Add file types to be tracked by git-lfs based on file extension, creates the .gitattributes file (e.g. `git lfs track "*.pth"`)
-  6. Copy this [.flake8](.flake8) file to customize the tool settings.
+    0. Create local repository (also creates new directory) `git init my_project`
+    1. Create a [markdown](https://en.wikipedia.org/wiki/Markdown) file, README.md describing the project.
+    2. Create an `environment_dev.yml` file based on [this example](environment_dev.yml). Change the environment name to an appropriate one and add relevant packages.
+    3. Copy this [pre-commit configuration file](.pre-commit-config.yaml).
+    4. Copy this [.gitignore file](.gitignore) and add file types you want git to ignore.
+    5. Add file types to be tracked by git-lfs based on file extension, creates the .gitattributes file (e.g. `git lfs track "*.pth"`)
+    6. Copy this [.flake8](.flake8) file to customize the tool settings.
 
   ```
   git add README.md environment_dev.yml .pre-commit-config.yaml .gitattributes .gitignore .flake8
