@@ -8,6 +8,10 @@
     git config --global user.email “firstlast@work.com”
     git config --global core.editor editor_of_choice
     ```
+   Editor option for the few folks on windows (haven't tried it myself):
+   ```
+   git config --global core.editor "'input/path/to/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+   ```
 1. Install [git-lfs](https://git-lfs.github.com) and run `git lfs install`.
 2. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html).
 3. Sign up for a [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account).
@@ -16,13 +20,13 @@
 ### Once per repository setup
 0. [Create empty repository on GitHub](https://docs.github.com/en/get-started/quickstart/create-a-repo), lets call it my_project.
 1. Initial commit into local repository and push to remote:
-  0. Create local repository (also creates new directory) `git init my_project`
-  1. Create a [markdown](https://en.wikipedia.org/wiki/Markdown) file, README.md describing the project.
-  2. Create an `environment_dev.yml` file based on [this example](environment_dev.yml). Change the environment name to an appropriate one and add relevant packages.
-  3. Copy this [pre-commit configuration file](.pre-commit-config.yaml).
-  4. Copy this [.gitignore file](.gitignore) and add file types you want git to ignore.
-  5. Add file types to be tracked by git-lfs based on file extension, creates the .gitattributes file (e.g. `git lfs track "*.pth"`)
-  6. Copy this [.flake8](.flake8) file to customize the tool settings.
+    0. Create local repository (also creates new directory) `git init my_project`
+    1. Create a [markdown](https://en.wikipedia.org/wiki/Markdown) file, README.md describing the project.
+    2. Create an `environment_dev.yml` file based on [this example](environment_dev.yml). Change the environment name to an appropriate one and add relevant packages.
+    3. Copy this [pre-commit configuration file](.pre-commit-config.yaml).
+    4. Copy this [.gitignore file](.gitignore) and add file types you want git to ignore.
+    5. Add file types to be tracked by git-lfs based on file extension, creates the .gitattributes file (e.g. `git lfs track "*.pth"`)
+    6. Copy this [.flake8](.flake8) file to customize the tool settings.
 
   ```
   git add README.md environment_dev.yml .pre-commit-config.yaml .gitattributes .gitignore .flake8
@@ -70,7 +74,7 @@ I strive to follow the guidance below, but don't always. Still, it's important t
 
 Personal pet peeves, in no particular order:
   * A single commit of all the code in the GitHub repository. Yes, you're sharing code but it did not magically materialize in its final form, be transparent so that we can trust the code and see how it developed over time. We can learn from paths that did not pan out almost as much as from the path that did. By providing all of the history we can see which algorithmic paths were attempted and did not work out. Help others avoid going down dead-end paths.
-  * Repository contains `.DS_Store` files. Yes, we know you are proud of your Mac. I like OSX too, but seriously, you should have added to .gitignore when setting up the repository.
+  * Repository contains `.DS_Store` files. Yes, we know you are proud of your Mac. I like OSX too, but seriously, you should have added this file type to the .gitignore file when setting up the repository.
   * Deep learning code sans-data, sans-weight files. This is completely useless in terms of reproducibility. Don't "share" like this.
   * Code duplication with minor, hard to detect, differences between copies.
 
@@ -93,9 +97,7 @@ Write code that is compliant with [PEP8](https://www.python.org/dev/peps/pep-000
    * Some folks don't like the Black formatting, it isn't all roses. An alternative is [autopep8](https://github.com/hhatto/autopep8).
 2. Testing - Write nominal regression tests at the same time you implement the functionality. Non-rigorous regression testing is acceptable in a research setting as we explore various solutions. The more rigorous the testing the easier it will be for a development team to get code into production. Use [pytest](https://docs.pytest.org/) for this task.
 3. Documentation - Write the documentation while you are implementing. Start by adding a README file to your repository (use [markdown](https://en.wikipedia.org/wiki/Markdown) or [restructured text](https://en.wikipedia.org/wiki/ReStructuredText)). It should include a general description of the repository contents, how to run the programs and possibly instructions on how to build them from source code. Generally, when we postpone writing documentation we will likely never do it. That's fine too, as long as you are willing to admit to yourself that you are consciously choosing to not document your code.
-
- In Python, use a consistent [Docstring](https://www.python.org/dev/peps/pep-0257/) format.
-Two popular ones are [Google style](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings) and [NumPy style](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard).
+In Python, use a consistent [Docstring](https://www.python.org/dev/peps/pep-0257/) format. Two popular ones are [Google style](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings) and [NumPy style](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard).
 4. Reproducible environment - include instructions or configuration files to reproduce the environment in which the code is expected to work. In Python you provide files listing all package dependencies enabling the creation of the appropriate virtual environment in which to run the program. A [requirements.txt](https://pip.pypa.io/en/latest/reference/requirements-file-format/) for plain Python, or an [environment.yml](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) for the anaconda Python distribution. For development we often rely on additional packages not required for usage (e.g. pytest). Consequentially we include a `requirements_dev.txt` (`environment_dev.yml`) in addition to the `requirements.txt` (`environment.yml`) files. Sample [requirements.txt](requirements.txt), [requirements_dev.txt](requirements_dev.txt) and [environment.yml](environment.yml), [environment_dev.yml](environment_dev.yml) files.
 5. Your code is a mathematical multi-parametric function that depends on many parameters beyond the input. These parameters are either:
   * Hard coded - best avoided if they need to be changed for different inputs.
