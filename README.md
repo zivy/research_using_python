@@ -8,6 +8,10 @@
     git config --global user.email “firstlast@work.com”
     git config --global core.editor editor_of_choice
     ```
+   Editor option for the few folks on windows (haven't tried it myself):
+   ```
+   git config --global core.editor "'input/path/to/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+   ```
 1. Install [git-lfs](https://git-lfs.github.com) and run `git lfs install`.
 2. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html).
 3. Sign up for a [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account).
@@ -70,7 +74,7 @@ I strive to follow the guidance below, but don't always. Still, it's important t
 
 Personal pet peeves, in no particular order:
   * A single commit of all the code in the GitHub repository. Yes, you're sharing code but it did not magically materialize in its final form, be transparent so that we can trust the code and see how it developed over time. We can learn from paths that did not pan out almost as much as from the path that did. By providing all of the history we can see which algorithmic paths were attempted and did not work out. Help others avoid going down dead-end paths.
-  * Repository contains `.DS_Store` files. Yes, we know you are proud of your Mac. I like OSX too, but seriously, you should have added to .gitignore when setting up the repository.
+  * Repository contains `.DS_Store` files. Yes, we know you are proud of your Mac. I like OSX too, but seriously, you should have added this file type to the .gitignore file when setting up the repository.
   * Deep learning code sans-data, sans-weight files. This is completely useless in terms of reproducibility. Don't "share" like this.
   * Code duplication with minor, hard to detect, differences between copies.
 
