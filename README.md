@@ -1,5 +1,7 @@
 # Guide for development of research code<br><sup>(using Anaconda Python)</sup>
 
+![Testing](https://github.com/zivy/research_using_python/actions/workflows/pre_commit.yml/badge.svg?branch=main)
+
 # TL;DR:
 ### One time setup
 0. Install [git](https://git-scm.com/) and go through its [one time setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup), bare minimum:
