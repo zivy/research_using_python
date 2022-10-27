@@ -109,4 +109,4 @@ if __name__ == "__main__":
         )
     )
     # for running the program
-    # sys.exit(main())
+    # sys.exit(main(sys.argv[1:]))

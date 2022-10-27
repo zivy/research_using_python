@@ -28,4 +28,4 @@ if __name__ == "__main__":
     # for debugging
     sys.exit(main(["parameters.json"]))
     # for running the program
-    # sys.exit(main())
+    # sys.exit(main(sys.argv[1:]))
