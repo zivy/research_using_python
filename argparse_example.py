@@ -1,6 +1,7 @@
 import argparse
 import pathlib
 import sys
+import pandas as pd
 import SimpleITK as sitk
 
 
@@ -62,6 +63,33 @@ def modality_dir_path(path, modality):
             )
     else:
         raise argparse.ArgumentTypeError(f"Invalid argument ({path}), not a directory.")
+
+
+def csv_path(path, required_columns={}):
+    """
+    Define the csv_path type for use with argparse. Checks
+    that the given path string is a path to a csv file and that the
+    header of the csv file contains the required columns.
+    """
+    p = pathlib.Path(path)
+    required_columns = set(required_columns)
+    if p.is_file():
+        try:  # only read the csv header
+            expected_columns_exist = required_columns.issubset(
+                set(pd.read_csv(path, nrows=0).columns.tolist())
+            )
+            if expected_columns_exist:
+                return p
+            else:
+                raise argparse.ArgumentTypeError(
+                    f"Invalid argument ({path}), does not contain all expected columns."
+                )
+        except UnicodeDecodeError:
+            raise argparse.ArgumentTypeError(
+                f"Invalid argument ({path}), not a csv file."
+            )
+    else:
+        raise argparse.ArgumentTypeError(f"Invalid argument ({path}), not a file.")
 
 
 def main(argv=None):
