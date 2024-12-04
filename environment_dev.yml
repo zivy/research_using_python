@@ -1,8 +1,12 @@
 name: my_project_dev
 
 channels:
-  - defaults
-  - simpleitk
+  # Avoiding defaults channel if possible so as not to require a paid license
+  # if it isn't necessary.
+  # Organizations with 200 or more people (e.g. a university outside the context of a course)
+  # is required to have a paid license to access the defaults channel and use the
+  # Anaconda distribution.
+  # https://www.anaconda.com/blog/is-conda-free
   - conda-forge
 dependencies:
   - SimpleITK>=2.0.0
