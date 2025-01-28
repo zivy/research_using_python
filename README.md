@@ -14,10 +14,12 @@
    ```
    git config --global core.editor "'input/path/to/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
    ```
-1. Install [git-lfs](https://git-lfs.github.com) and run `git lfs install`.
+   [Instructions](https://docs.github.com/en/get-started/getting-started-with-git/associating-text-editors-with-git) for a variety of other popular editor configurations.
+
+1. Install [git-lfs](https://git-lfs.github.com) and run `git lfs install` (only if you store large or binary files).
 2. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html).
 3. Sign up for a [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account).
-4. [Generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and [add it to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+4. [Generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and [add it to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). When generating the SSH key **set the passphrase** and [configure](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases) so you will not need to enter it every time the SSH keys are used.
 
 ### Once per repository setup
 0. [Create empty repository on GitHub](https://docs.github.com/en/get-started/quickstart/create-a-repo), lets call it my_project.
