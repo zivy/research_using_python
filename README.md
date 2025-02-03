@@ -1,6 +1,6 @@
-# Guide for development of research code<br><sup>(using Anaconda Python)</sup>
+# Guide for development of research code<br><sup>(using Anaconda Python with some hints for R)</sup>
 
-![Testing](https://github.com/zivy/research_using_python/actions/workflows/pre_commit.yml/badge.svg?branch=main)
+![Testing](https://github.com/zivy/research_code_guide/actions/workflows/pre_commit.yml/badge.svg?branch=main)
 
 # TL;DR:
 ### One time setup
@@ -14,20 +14,21 @@
    ```
    git config --global core.editor "'input/path/to/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
    ```
-   [Instructions](https://docs.github.com/en/get-started/getting-started-with-git/associating-text-editors-with-git) for a variety of other popular editor configurations.
+   [Instructions from the good folks at GitHub](https://docs.github.com/en/get-started/getting-started-with-git/associating-text-editors-with-git) for a variety of other  operating systems and editor configurations.
 
 1. Install [git-lfs](https://git-lfs.github.com) and run `git lfs install` (only if you store large or binary files).
-2. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html).
+2. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html). We try to avoid the full Anaconda installation and its `defaults` channel due to licensing issues. For more details see the [Anaconda terms of service FAQ](https://www.anaconda.com/pricing/terms-of-service-faqs) question titled "Do I have to pay if I use Miniconda?"
 3. Sign up for a [GitHub account](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account).
 4. [Generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and [add it to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account). When generating the SSH key **set the passphrase** and [configure](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases) so you will not need to enter it every time the SSH keys are used.
+5. For easy access to many git pre commit hooks, install [pre-commit](https://pre-commit.com/) and see [this repository](https://github.com/pre-commit/pre-commit-hooks) for a selection of hooks. If using the `R ` programming language, see [these instructions](https://cran.r-project.org/web/packages/precommit/vignettes/precommit.html) and [these `R` specific hooks](https://lorenzwalthert.github.io/precommit/articles/available-hooks.html).
 
 ### Once per repository setup
 0. [Create empty repository on GitHub](https://docs.github.com/en/get-started/quickstart/create-a-repo), lets call it my_project.
 1. Initial commit into local repository and push to remote:
     1. Create local repository (also creates new directory) `git init my_project`
     2. Create a [markdown](https://en.wikipedia.org/wiki/Markdown) file, README.md describing the project.
-    3. Create an `environment_dev.yml` file based on [this example](environment_dev.yml). Change the environment name to an appropriate one and add relevant packages.
-    4. Copy this [pre-commit configuration file](.pre-commit-config.yaml).
+    3. Create an `environment_dev.yml` file based on [this example](environment_dev.yml). Change the environment name to an appropriate one and add relevant packages. If using the `R` programming language, see the [renv](https://rstudio.github.io/renv/articles/renv.html) package for similar functionality.
+    4. Copy this [pre-commit configuration file](.pre-commit-config.yaml) and install the hook scripts listed in it, `pre-commit install`.
     5. Copy this [.gitignore file](.gitignore) and add file types you want git to ignore.
     6. Add file types to be tracked by git-lfs based on file extension, creates the .gitattributes file (e.g. `git lfs track "*.pth"`)
     7. Copy this [.flake8](.flake8) file to customize the tool settings.
